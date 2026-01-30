@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#a0d8ff"/>
+      <stop offset="1" stop-color="#b7e2b4"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#sky)"/>
+  <!-- simple tree -->
+  <circle cx="140" cy="140" r="50" fill="#1e7a2b" />
+  <rect x="130" y="160" width="20" height="60" fill="#6f3f1f" />
+  <!-- sun -->
+  <circle cx="330" cy="60" r="24" fill="#ffd24d" />
+</svg>

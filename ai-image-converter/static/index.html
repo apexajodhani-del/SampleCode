@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Converter</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">AI Converter</div>
+        <nav>
+            <a href="#" class="tab active" data-tab="home">Home</a>
+            <a href="#" class="tab" data-tab="bw">B&W</a>
+            <a href="#" class="tab" data-tab="cartoon">Cartoon</a>
+            <a href="#" class="tab" data-tab="removebg">Remove BG</a>
+            <a href="#" class="tab" data-tab="changebg">Change BG</a>
+        </nav>
+        <div class="trial">
+            <button>Use Free Trial</button>
+            <span id="remaining">10 conversions left</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside id="sidebar">
+            <ul>
+                <li data-category="bw" class="active">
+                    <img src="/static/images/sample_bw.svg?v=1" alt="B&W">
+                    Black & White
+                </li>
+                <li data-category="cartoon">
+                    <img src="/static/images/sample_cartoon.svg?v=1" alt="Cartoon">
+                    Cartoon
+                </li>
+                <li data-category="removebg">
+                    <img src="/static/images/sample_removebg.svg?v=1" alt="Remove BG">
+                    Remove Background
+                </li>
+                <li data-category="changebg">
+                    <img src="/static/images/sample_changebg.svg?v=1" alt="Change BG">
+                    Change Background
+                </li>
+            </ul>
+        </aside>
+
+        <main id="content">
+            <div id="home-content">
+                <section class="hero">
+                    <h1>Convert Your Images with AI</h1>
+                    <p>Transform your photos with powerful AI tools. Upload an image and see the magic happen instantly.</p>
+                    <div class="image-slider">
+                        <div class="slider-container">
+                            <div class="slide active" data-type="photo"><img src="/sample?type=photo"><p>Photos</p></div>
+                            <div class="slide" data-type="illustration"><img src="/sample?type=illustration"><p>Illustrations</p></div>
+                            <div class="slide" data-type="artwork"><img src="/sample?type=artwork"><p>Artwork</p></div>
+                        </div>
+                        <button class="slider-btn prev">‹</button>
+                        <button class="slider-btn next">›</button>
+                    </div>
+                </section>
+                <div class="categories">
+                    <div class="card" data-category="bw">
+                        <img src="/static/images/sample_bw.svg?v=1" alt="B&W">
+                        <h3>Black & White</h3>
+                        <p>Convert to grayscale</p>
+                        <button>Convert</button>
+                    </div>
+                    <div class="card" data-category="cartoon">
+                        <img src="/static/images/sample_cartoon.svg?v=1" alt="Cartoon">
+                        <h3>Cartoon Converter</h3>
+                        <p>Generate cartoon styles</p>
+                        <button>Convert</button>
+                    </div>
+                    <div class="card" data-category="removebg">
+                        <img src="/static/images/sample_removebg.svg?v=1" alt="Remove BG">
+                        <h3>Background Removal</h3>
+                        <p>Remove background automatically</p>
+                        <button>Convert</button>
+                    </div>
+                    <div class="card" data-category="changebg">
+                        <img src="/static/images/sample_changebg.svg?v=1" alt="Change BG">
+                        <h3>Background Change</h3>
+                        <p>Change background to selected</p>
+                        <button>Convert</button>
+                    </div>
+                </div>
+                <form id="home-convert-form" enctype="multipart/form-data" class="home-upload-form">
+                    <h2>Try It Now</h2>
+                    <div class="upload-area" id="upload-area">
+                        <input type="file" id="home-upload" name="image" accept="image/jpeg,image/png" required>
+                        <label for="home-upload" class="upload-label">Drag & Drop or Click to Upload Image</label>
+                        <span id="home-file-name">No file chosen</span>
+                    </div>
+                    <button type="submit" class="hero-convert-btn">Convert Image</button>
+                    <input type="hidden" name="category" value="bw">
+                    <input type="hidden" name="style" value="">
+                </form>
+            </div>
+            <div id="category-content" style="display:none;">
+                <h2 id="category-title">Black & White</h2>
+                <p id="category-desc">Upload an image to convert it to black and white.</p>
+                <div class="image-description">
+                    <p>See how your image transforms from the original to the processed version below.</p>
+                </div>
+                <div class="examples">
+                    <div class="example-item">
+                        <h4>Original Image</h4>
+                        <div class="sample-img" id="before-sample">
+                            <img id="before-img" src="" alt="Original Image">
+                        </div>
+                    </div>
+                    <div class="example-item">
+                        <h4>Converted Image</h4>
+                        <div class="sample-img" id="after-sample">
+                            <img id="after-img" src="" alt="Converted Image">
+                        </div>
+                    </div>
+                </div>
+                <div class="upload-section">
+                    <h3>Upload Your Image</h3>
+                    <form id="convert-form" enctype="multipart/form-data">
+                        <label for="image-upload" class="upload-btn">Choose Image</label>
+                        <input type="file" id="image-upload" name="image" accept="image/jpeg,image/png" required style="display:none;">
+                        <span id="file-name">No file chosen</span>
+                        <select name="style" id="style-select" style="display:none;">
+                            <option value="">Select an option</option>
+                        </select>
+                        <input type="hidden" name="category" id="category-input">
+                        <button type="submit" id="convert-btn" class="convert-btn" disabled>Convert Image</button>
+                        <div id="processing" style="display:none;">
+                            <div class="loader"></div>
+                            <p>Processing your image...</p>
+                        </div>
+                    </form>
+                </div>
+                <div id="result" style="display:none;">
+                    <h3>Converted Image</h3>
+                    <img id="result-img" src="">
+                    <a id="download" download="converted.png" class="download-btn">Download</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

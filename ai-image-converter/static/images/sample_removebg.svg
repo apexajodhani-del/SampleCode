@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <!-- transparent background - subject silhouette -->
+  <g transform="translate(100,30)">
+    <ellipse cx="120" cy="110" rx="70" ry="45" fill="#d45555" />
+    <rect x="95" y="150" width="50" height="60" fill="#8b5a3c" rx="6"/>
+    <circle cx="160" cy="90" r="8" fill="#000" />
+    <circle cx="100" cy="90" r="8" fill="#000" />
+  </g>
+</svg>

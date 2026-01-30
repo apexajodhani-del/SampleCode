@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Matching Game</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>🧠 Memory Matching Game</h1>
+    </header>
+    <main>
+        <div id="difficulty-selection">
+            <h3>Select Difficulty</h3>
+            <div id="difficulty-buttons">
+                <button id="easy-btn">Easy (4x4)</button>
+                <button id="medium-btn">Medium (6x6)</button>
+                <button id="hard-btn">Hard (8x8)</button>
+            </div>
+        </div>
+        <div id="game-area" style="display: none;">
+            <div id="stats">
+                <div class="stat">
+                    <span id="timer">00:00</span>
+                    <label>⏱️</label>
+                </div>
+                <div class="stat">
+                    <span id="moves">0</span>
+                    <label>🔄</label>
+                </div>
+                <div class="stat">
+                    <span id="score">0</span>
+                    <label>⭐</label>
+                </div>
+            </div>
+            <button id="new-game">NEW GAME</button>
+            <div id="board"></div>
+        </div>
+        <aside id="leaderboard">
+            <h3>🏆 Leaderboard</h3>
+            <div id="leaderboard-filters">
+                <button class="filter active" data-difficulty="all">All</button>
+                <button class="filter" data-difficulty="easy">Easy</button>
+                <button class="filter" data-difficulty="medium">Medium</button>
+                <button class="filter" data-difficulty="hard">Hard</button>
+            </div>
+            <div id="leaderboard-content"></div>
+        </aside>
+    </main>
+    <div id="win-modal" style="display: none;">
+        <div id="win-content">
+            <h2>🎉 Congratulations!</h2>
+            <p>Time: <span id="win-time"></span></p>
+            <p>Moves: <span id="win-moves"></span></p>
+            <p>Score: <span id="win-score"></span></p>
+            <input type="text" id="player-name" placeholder="Enter your name">
+            <button id="submit-score">Submit Score</button>
+            <button id="play-again">Play Again</button>
+        </div>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+</html>
